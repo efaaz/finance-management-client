@@ -24,7 +24,7 @@ export const TextGenerateEffect = ({
   return (
     <div className={cn("font-bold", className)} ref={scope}>
       <div className="mt-4">
-        <div className="dark:text-white text-black text-2xl leading-snug tracking-wide">
+        <div className="dark:text-white text-black text-xs sm:text-xl leading-snug tracking-wide">
           {wordsArray.map((word, idx) => (
             <motion.span
               key={word + idx}

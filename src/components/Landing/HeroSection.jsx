@@ -12,8 +12,8 @@ function HeroSection() {
           <h1 className="text-xl text-center sm:text-5xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-300 py-4">
             The road to freedom starts from here
           </h1>
-          <div className="text-neutral-700 text-center text-xs sm:text-sm mt-4">
-            <TextGenerateEffect duration={2} filter={false} words={words} />
+          <div className="text-neutral-700 text-center  mt-2">
+            <TextGenerateEffect className={"text-xs md:text-sm"} duration={2} filter={false} words={words} />
           </div>
           <div className="justify-center flex mt-5">
             <button className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
