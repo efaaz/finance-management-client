@@ -7,10 +7,10 @@ function Home() {
   return (
     <>
       <HeroSection />
-      <div className="h-auto overflow-hidden w-full dark:bg-black bg-white  dark:bg-grid-small-white/[0.1] bg-grid-small-black/[0.1] relative">
+      <div className="h-auto overflow-hidden w-full bg-black bg-grid-small-white/[0.1] relative">
         <FeaturesSection />z
       </div>
-      <div className="h-auto overflow-hidden w-full dark:bg-black bg-white  dark:bg-grid-small-white/[0.1] bg-grid-small-black/[0.1] relative">
+      <div className="h-auto overflow-hidden w-full dark:bg-black bg-grid-small-white/[0.1] relative">
         <QuoteSection />
       </div>
     </>

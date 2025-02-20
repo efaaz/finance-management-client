@@ -1,41 +1,33 @@
-import React, { useState } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "../ui/navbar-menu";
-import { cn } from "../../lib/utils/utils";
-import { Link } from "react-router";
+import React from "react";
+import { IconHome, IconMessage, IconUser } from "@tabler/icons-react";
+import { FloatingNav } from "../ui/floating-navbar";
 
 function Navbar({ className }) {
-  const [active, setActive] = useState(null);
+  const navItems = [
+    {
+      name: "Home",
+      link: "/",
+      icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "Features",
+      link: "/features",
+      icon: (
+        <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />
+      ),
+    },
+    {
+      name: "About Us",
+      link: "/aboutUs",
+      icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    },
+  ];
   return (
-    <div
-      className={cn(
-        "fixed top-10 inset-x-0 max-w-2xl mx-auto z-50 shadow-xl border-slate-100 rounded-full",
-        className
-      )}
-    >
-      <Menu setActive={setActive}>
-        <Link href="/web-dev">
-          <MenuItem
-            setActive={setActive}
-            active={active}
-            item="Home"
-          ></MenuItem>
-        </Link>
-        <Link href="/Features">
-          <MenuItem
-            setActive={setActive}
-            active={active}
-            item="Features"
-          ></MenuItem>
-        </Link>
-        <Link href="/Features">
-          <MenuItem
-            setActive={setActive}
-            active={active}
-            item="About Us"
-          ></MenuItem>
-        </Link>
-      </Menu>
+    <>
+      <div className="relative  w-full">
+      <FloatingNav navItems={navItems} />
     </div>
+    </>
   );
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { TextGenerateEffect } from "../ui/text-generate-effect";
 import { Spotlight } from "../ui/spotlight-new";
-const words = `Say goodbye to financial chaos! Our AI-powered finance tracker lets you monitor spending, boost savings, and stay in control – all in a sleek, modern dashboard. Smart insights, effortless tracking, and total financial freedom!`;
+const words = `Say goodbye to financial chaos! Our nextgen finance tracker lets you monitor spending, boost savings, and stay in control – all in a sleek, modern dashboard. Smart insights, effortless tracking, stress less live more!`;
 
 function HeroSection() {
   return (
@@ -13,7 +13,12 @@ function HeroSection() {
             The road to freedom starts from here
           </h1>
           <div className="text-neutral-700 text-center  mt-2">
-            <TextGenerateEffect className={"text-xs md:text-sm"} duration={2} filter={false} words={words} />
+            <TextGenerateEffect
+              className={"text-xs md:text-sm"}
+              duration={2}
+              filter={false}
+              words={words}
+            />
           </div>
           <div className="justify-center flex mt-5">
             <button className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">

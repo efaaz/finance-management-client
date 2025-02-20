@@ -17,9 +17,9 @@ export function FeaturesSection() {
       </div>
       <div className="py-8 lg:py-20 mx-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-2 max-w-7xl mx-auto">
-          {grid.map((feature) => (
+          {grid.map((feature, idx) => (
             <div
-              key={feature.title}
+              key={idx}
               className="relative bg-gradient-to-b dark:from-neutral-900 from-neutral-100 dark:to-neutral-950 to-white p-6 rounded-3xl overflow-hidden"
             >
               <Grid size={20} />
@@ -119,10 +119,10 @@ export function GridPattern({ width, height, x, y, squares, ...props }) {
       />
       {squares && (
         <svg x={x} y={y} className="overflow-visible">
-          {squares.map(([x, y]) => (
+          {squares.map(([x, y], idx) => (
             <rect
               strokeWidth="0"
-              key={`${x}-${y}`}
+              key={idx}
               width={width + 1}
               height={height + 1}
               x={x * width}
