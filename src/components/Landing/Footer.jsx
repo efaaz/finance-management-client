@@ -15,7 +15,7 @@ function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             {/* Company Branding */}
             <div className="mb-4 md:mb-0 text-center md:text-left">
-              <h1 className="text-2xl font-bold">YourCompany</h1>
+              <h1 className="text-2xl font-bold">FinX</h1>
               <p className="text-sm mt-2">© 2025 FinX All rights reserved.</p>
             </div>
 
