@@ -3,6 +3,7 @@ import ErrorPage from "../pages/ErrorPage";
 import Layout from "../Layout/Layout";
 import Home from "../pages/Home";
 import FeaturePage from "../pages/FeaturePage";
+import SignUp from "../pages/SignUp";
 
 const AppRoutes = () => {
   return (
@@ -12,7 +13,7 @@ const AppRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/features" element={<FeaturePage />} />
         {/* <Route path="sign-in" element={<Login />} /> */}
-        {/* <Route path="/sign-up" element={<SignUp />} /> */}
+        <Route path="/sign-up" element={<SignUp />} />
       </Route>
 
       {/* Error Page */}

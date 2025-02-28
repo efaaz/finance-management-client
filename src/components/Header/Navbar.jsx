@@ -25,8 +25,8 @@ function Navbar({ className }) {
   return (
     <>
       <div className="relative  w-full">
-      <FloatingNav navItems={navItems} />
-    </div>
+        <FloatingNav navItems={navItems} />
+      </div>
     </>
   );
 }
