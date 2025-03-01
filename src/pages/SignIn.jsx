@@ -5,82 +5,71 @@ import { IconBrandGoogle } from "@tabler/icons-react";
 import { cn } from "../lib/utils/utils";
 import { Label } from "../components/ui/label";
 import { Input } from "../components/ui/input";
-import { registerUser } from "../features/auth/authSlice";
- // Import your RTK action
+import { loginUser} from "../features/auth/authSlice";
 
-function SignUp() {
+function SignIn() {
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.auth);
-  const { 
-    register, 
-    handleSubmit, 
-    formState: { errors } 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
-    
-    dispatch(registerUser(data));
+
+    dispatch(loginUser(data));
   };
 
   return (
     <div className="pt-40 w-full">
-      <div className="max-w-md items-center w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+      <div className="max-w-md items-center md:border border-slate-500 w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
         <h2 className="font-bold text-xl text-center text-neutral-800 dark:text-neutral-200">
-          Welcome to FinX
+          Log in
         </h2>
         <p className="text-neutral-600 text-sm max-w-sm text-center mt-2 dark:text-neutral-300">
-          Sign up to FinX if you don't have an account yet.
+          Enter your email below to login to your account
         </p>
         <form className="my-8" onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
-            <LabelInputContainer>
-              <Label htmlFor="name">Name</Label>
-              <Input 
-                id="name" 
-                placeholder="Tyler" 
-                type="text" 
-                {...register("name", { required: "Name is required" })}
-              />
-              {errors.name && (
-                <span className="text-red-500 text-xs">{errors.name.message}</span>
-              )}
-            </LabelInputContainer>
-          </div>
           <LabelInputContainer className="mb-4">
-            <Label htmlFor="email">Email Address</Label>
-            <Input 
-              id="email" 
-              placeholder="projectmayhem@fc.com" 
-              type="email" 
-              {...register("email", { 
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              placeholder="m@gmail.com"
+              type="email"
+              {...register("email", {
                 required: "Email is required",
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "Invalid email address"
-                }
+                  message: "Invalid email address",
+                },
               })}
             />
             {errors.email && (
-              <span className="text-red-500 text-xs">{errors.email.message}</span>
+              <span className="text-red-500 text-xs">
+                {errors.email.message}
+              </span>
             )}
           </LabelInputContainer>
           <LabelInputContainer className="mb-4">
             <Label htmlFor="password">Password</Label>
-            <Input 
-              id="password" 
-              placeholder="••••••••" 
-              type="password" 
-              {...register("password", { 
+            <Input
+              id="password"
+              placeholder="••••••••"
+              type="password"
+              {...register("password", {
                 required: "Password is required",
                 minLength: {
                   value: 6,
-                  message: "Password must be at least 6 characters"
-                }
+                  message: "Password must be at least 6 characters",
+                },
               })}
             />
             {errors.password && (
-              <span className="text-red-500 text-xs">{errors.password.message}</span>
+              <span className="text-red-500 text-xs">
+                {errors.password.message}
+              </span>
             )}
           </LabelInputContainer>
 
@@ -93,7 +82,7 @@ function SignUp() {
             type="submit"
             disabled={loading}
           >
-            {loading ? "Signing Up..." : "Sign Up →"}
+            {loading ? "Signing in..." : "Sign In →"}
             <BottomGradient />
           </button>
 
@@ -117,7 +106,6 @@ function SignUp() {
   );
 }
 
-
 const BottomGradient = () => {
   return (
     <>
@@ -135,5 +123,4 @@ const LabelInputContainer = ({ children, className }) => {
   );
 };
 
-
-export default SignUp;
+export default SignIn;

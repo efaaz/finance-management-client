@@ -71,7 +71,7 @@ export const FloatingNav = ({ navItems, className }) => {
             <span className="text-sm">{navItem.name}</span>
           </NavLink>
         ))}
-        <Link className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full">
+        <Link to="/sign-in" className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full">
           <span>Login</span>
           <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-[#5c5ee5] to-transparent  h-px" />
         </Link>

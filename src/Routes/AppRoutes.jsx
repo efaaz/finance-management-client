@@ -4,6 +4,7 @@ import Layout from "../Layout/Layout";
 import Home from "../pages/Home";
 import FeaturePage from "../pages/FeaturePage";
 import SignUp from "../pages/SignUp";
+import SignIn from "../pages/SignIn";
 
 const AppRoutes = () => {
   return (
@@ -12,7 +13,7 @@ const AppRoutes = () => {
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/features" element={<FeaturePage />} />
-        {/* <Route path="sign-in" element={<Login />} /> */}
+        <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
       </Route>
 
