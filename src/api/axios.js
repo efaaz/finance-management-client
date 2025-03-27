@@ -1,13 +1,22 @@
 import axios from "axios";
-
 const instance = axios.create({
-  baseURL: "http://localhost:8000/api/v1/auth/users", // Your backend URL
+  baseURL: "http://localhost:8000/api/v1/auth/users",
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-// Add request interceptor to inject token before sending requests to the backend
+// remove tokens form local storage access only form rtk store for accestoken
+//  delete refresh token form rtk store state update the slice
+// next update the logout function
+// protected routes 
+
+
+
+
+
+
+// request interceptor to inject token before sending requests to the backend
 instance.interceptors.request.use((config) => {
   const token = localStorage.getItem("accessToken");
   if (token) {
@@ -19,16 +28,17 @@ instance.interceptors.request.use((config) => {
 // Function to refresh access token
 const refreshAccessToken = async () => {
   try {
-    const response = await axios.post("/auth/refresh", {
-      refreshToken: localStorage.getItem("refreshToken"),
-    });
-
+    const response = await axios.post(
+      "/auth/refresh",
+      {},
+      { withCredentials: true }
+    );
+    console.log(response.data.accessToken);
     return response.data.accessToken;
   } catch (error) {
     throw new Error("Refresh token failed");
   }
 };
-
 
 // Add response interceptor to refresh token if it's expired
 instance.interceptors.response.use(

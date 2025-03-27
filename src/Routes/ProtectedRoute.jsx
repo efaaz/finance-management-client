@@ -4,7 +4,11 @@ import { Navigate } from 'react-router-dom';
 
 const ProtectedRoute = ({ children }) => {
   const { user } = useSelector((state) => state.auth);
-  return user ? children : <Navigate to="/login" replace />;
-};
+  const accessToken = localStorage.getItem('accessToken');
 
-export default ProtectedRoute;
+  if (!user || !accessToken) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+};

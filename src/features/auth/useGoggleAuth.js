@@ -1,5 +1,4 @@
 import { useGoogleLogin } from "@react-oauth/google";
-import axios from "../../api/axios";
 import { googleLogin } from "./authSlice";
 import { useDispatch } from "react-redux";
 

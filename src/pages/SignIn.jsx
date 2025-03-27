@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { IconBrandGoogle } from "@tabler/icons-react";
@@ -7,20 +7,26 @@ import { Label } from "../components/ui/label";
 import { Input } from "../components/ui/input";
 import { loginUser } from "../features/auth/authSlice";
 import useGoogleAuth from "../features/auth/useGoggleAuth";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 function SignIn() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const googleAuth = useGoogleAuth();
-  const { loading, error } = useSelector((state) => state.auth);
+  const { isLoading, error, user } = useSelector((state) => state.auth);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    dispatch(loginUser(data));
+    dispatch(loginUser(data))
   };
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user]);
 
   return (
     <div className="pt-40 w-full">
@@ -80,9 +86,9 @@ function SignIn() {
           <button
             className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
             type="submit"
-            disabled={loading}
+            disabled={isLoading}
           >
-            {loading ? "Signing in..." : "Sign In →"}
+            {isLoading ? "Signing in..." : "Sign In →"}
             <BottomGradient />
           </button>
 

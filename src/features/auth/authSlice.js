@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "../../api/axios";
+import { toast } from "sonner";
 
 const initialState = {
   user: null,
@@ -39,7 +40,6 @@ export const loginUser = createAsyncThunk(
 
 export const logoutUser = createAsyncThunk("/logout", async () => {
   localStorage.removeItem("accessToken");
-  localStorage.removeItem("refreshToken");
 });
 
 export const googleLogin = createAsyncThunk(
@@ -68,8 +68,13 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = action.payload.user;
-        localStorage.setItem("token", action.payload.token);
+        const { user, accessToken, refreshToken } = action.payload.data;
+        console.log(action.payload.data);
+        state.user = user;
+        state.accessToken = accessToken;
+        state.refreshToken = refreshToken;
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("refreshToken", refreshToken);
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -92,6 +97,7 @@ const authSlice = createSlice({
 
         localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("refreshToken", refreshToken);
+        toast("Login successful!", { type: "success" });
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;

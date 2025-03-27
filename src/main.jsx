@@ -8,6 +8,7 @@ import { ThemeProvider } from "./components/ui/theme-provider.jsx";
 import { Provider } from "react-redux";
 import store from "./app/store.js";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { Toaster } from "./components/ui/toaster.jsx";
 
 // Check for existing token on app load
 const token = localStorage.getItem("token");
@@ -16,7 +17,6 @@ if (token) {
   store.dispatch({ type: "auth/verifyToken" });
 }
 
-
 createRoot(document.getElementById("root")).render(
   <GoogleOAuthProvider clientId={import.meta.env.VITE_GOGGLE_CLIENT_ID}>
     <Provider store={store}>
@@ -24,6 +24,7 @@ createRoot(document.getElementById("root")).render(
       <BrowserRouter>
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           <AppRoutes />
+          <Toaster />
         </ThemeProvider>
       </BrowserRouter>
       <Analytics />
