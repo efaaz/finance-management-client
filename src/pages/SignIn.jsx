@@ -5,38 +5,38 @@ import { IconBrandGoogle } from "@tabler/icons-react";
 import { cn } from "../lib/utils/utils";
 import { Label } from "../components/ui/label";
 import { Input } from "../components/ui/input";
-import { loginUser} from "../features/auth/authSlice";
+import { loginUser } from "../features/auth/authSlice";
+import useGoogleAuth from "../features/auth/useGoggleAuth";
+import { Link } from "react-router";
 
 function SignIn() {
   const dispatch = useDispatch();
+  const googleAuth = useGoogleAuth();
   const { loading, error } = useSelector((state) => state.auth);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
   const onSubmit = (data) => {
-    console.log(data);
-
     dispatch(loginUser(data));
   };
 
   return (
     <div className="pt-40 w-full">
-      <div className="max-w-md items-center md:border border-slate-500 w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
+      <div className="max-w-md items-center w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
         <h2 className="font-bold text-xl text-center text-neutral-800 dark:text-neutral-200">
           Log in
         </h2>
         <p className="text-neutral-600 text-sm max-w-sm text-center mt-2 dark:text-neutral-300">
-          Enter your email below to login to your account
+          Enter your email below to login your account
         </p>
         <form className="my-8" onSubmit={handleSubmit(onSubmit)}>
           <LabelInputContainer className="mb-4">
             <Label htmlFor="email">Email</Label>
             <Input
               id="email"
-              placeholder="m@gmail.com"
+              placeholder="efaz@gmail.com"
               type="email"
               {...register("email", {
                 required: "Email is required",
@@ -61,7 +61,7 @@ function SignIn() {
               {...register("password", {
                 required: "Password is required",
                 minLength: {
-                  value: 6,
+                  value: 3,
                   message: "Password must be at least 6 characters",
                 },
               })}
@@ -92,6 +92,7 @@ function SignIn() {
             <button
               className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]"
               type="button"
+              onClick={() => googleAuth()}
             >
               <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
               <span className="text-neutral-700 dark:text-neutral-300 text-sm">
@@ -101,6 +102,10 @@ function SignIn() {
             </button>
           </div>
         </form>
+        <div className="flex justify-center items-center gap-2">
+          <p className="text-slate-200">Don't have an account ? </p>
+          <Link to="/sign-up" className="text-violet-600 underline font-semibold">Sign Up</Link>
+        </div>
       </div>
     </div>
   );
