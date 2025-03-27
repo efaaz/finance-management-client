@@ -1,13 +1,10 @@
 import React from "react";
-import { WavyBackground } from "../components/ui/wavy-background";
 
-function AboutUs() {
+function AboutUs() { 
   return (
     <>
       <div className="max-w-5xl mt-28 mx-auto text-neutral-300 p-4 md:p-8">
-        <h1 className=" md:text-5xl font-bold text-2xl mb-4">
-          About Us
-        </h1>
+        <h1 className=" md:text-5xl font-bold text-2xl mb-4">About Us</h1>
         <p className=" font-semibold">
           FinX was born out of a personal need. As someone who has always been
           meticulous about money, I spent years tracking every expense and
