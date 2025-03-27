@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.2",
+    "@react-oauth/google": "^0.12.1",
     "@react-three/fiber": "^8.17.10",
     "@reduxjs/toolkit": "^2.6.0",
     "@tabler/icons-react": "^3.29.0",
@@ -20,6 +21,7 @@
     "axios": "^1.8.1",
     "clsx": "^2.1.1",
     "cobe": "^0.6.3",
+    "env": "^0.0.2",
     "framer-motion": "^11.15.0",
     "mini-svg-data-uri": "^1.4.4",
     "motion": "^12.4.7",

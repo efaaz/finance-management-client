@@ -7,6 +7,7 @@ import AppRoutes from "./Routes/AppRoutes.jsx";
 import { ThemeProvider } from "./components/ui/theme-provider.jsx";
 import { Provider } from "react-redux";
 import store from "./app/store.js";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 // Check for existing token on app load
 const token = localStorage.getItem("token");
@@ -15,14 +16,17 @@ if (token) {
   store.dispatch({ type: "auth/verifyToken" });
 }
 
+
 createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
-    <SpeedInsights />
-    <BrowserRouter>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <AppRoutes />
-      </ThemeProvider>
-    </BrowserRouter>
-    <Analytics />
-  </Provider>
+  <GoogleOAuthProvider clientId={import.meta.env.VITE_GOGGLE_CLIENT_ID}>
+    <Provider store={store}>
+      <SpeedInsights />
+      <BrowserRouter>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <AppRoutes />
+        </ThemeProvider>
+      </BrowserRouter>
+      <Analytics />
+    </Provider>
+  </GoogleOAuthProvider>
 );
