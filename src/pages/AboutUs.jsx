@@ -9,9 +9,9 @@ function AboutUs() {
   return (
     <>
       <div className="max-w-6xl mt-28 mx-auto text-neutral-300 p-4 md:p-8">
-        <h1 className=" md:text-5xl font-bold text-2xl mb-4">About Us</h1>
-        <RiDoubleQuotesL className="text-6xl " />
-        <div className="px-12">
+        <h1 className=" md:text-5xl font-bold text-3xl mb-4">About Us</h1>
+        <RiDoubleQuotesL className="md:text-6xl text-2xl " />
+        <div className="md:px-12 px-6">
           <p className=" font-semibold">
             FinX was born out of a personal need. As someone who has always been
             meticulous about money, I spent years tracking every expense and
@@ -56,7 +56,7 @@ function AboutUs() {
           </p>
         </div>
         <div className="flex justify-end">
-          <RiDoubleQuotesR className="text-6xl flex justify-end" />
+          <RiDoubleQuotesR className="md:text-6xl text-2xl  flex justify-end" />
         </div>
         <div className="flex justify-end pr-4 items-center md:mt-2 mb-1">
           <Avatar className="border-2 rounded-full border-blue-700">
@@ -66,13 +66,13 @@ function AboutUs() {
           <div className="ml-4">
             <a
               href="https://linkedin.com/in/wasifur-rahman-efaz"
-              className="text-lg font-bold"
+              className="md:text-lg text-base font-bold"
               target="_blank"
               rel="noopener noreferrer"
             >
               Wasifur Rahman Efaz
             </a>
-            <p className="text-sm text-neutral-400">
+            <p className="md:text-sm text-xs text-neutral-400">
               Founder & Developer of FinX
             </p>
           </div>
