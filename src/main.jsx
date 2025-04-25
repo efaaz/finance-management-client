@@ -5,28 +5,33 @@ import "./index.css";
 import { BrowserRouter } from "react-router";
 import AppRoutes from "./Routes/AppRoutes.jsx";
 import { ThemeProvider } from "./components/ui/theme-provider.jsx";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import store from "./app/store.js";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { Toaster } from "./components/ui/toaster.jsx";
+import setupInterceptors from "./api/axiosInterceptors.js";
 
-// Check for existing token on app load
-const token = localStorage.getItem("token");
-if (token) {
-  // You might want to add a "verify token" API call here
-  store.dispatch({ type: "auth/verifyToken" });
-}
+// Create app component with proper hook usage
+const AppWrapper = () => {
+  return (
+    <BrowserRouter>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <AppRoutes />
+        <Toaster />
+      </ThemeProvider>
+    </BrowserRouter>
+  );
+};
 
+// Initialize interceptors before creating root
+setupInterceptors();
+
+// Create root and render app
 createRoot(document.getElementById("root")).render(
   <GoogleOAuthProvider clientId={import.meta.env.VITE_GOGGLE_CLIENT_ID}>
     <Provider store={store}>
       <SpeedInsights />
-      <BrowserRouter>
-        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-          <AppRoutes />
-          <Toaster />
-        </ThemeProvider>
-      </BrowserRouter>
+      <AppWrapper />
       <Analytics />
     </Provider>
   </GoogleOAuthProvider>
