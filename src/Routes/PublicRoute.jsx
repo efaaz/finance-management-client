@@ -1,9 +1,12 @@
-import { Outlet } from "react-router";
+import { useSelector } from "react-redux";
+import { Navigate, Outlet } from "react-router";
 import Navbar from "../components/Header/Navbar";
 import Footer from "../components/Landing/Footer";
 
-const Layout = () => {
-  return (
+const PublicRoute = () => {
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
+  return !isAuthenticated ? (
     <div className="flex flex-col min-h-screen bg-black bg-grid-small-white/[0.1]">
       {/* Header */}
       <Navbar />
@@ -14,7 +17,9 @@ const Layout = () => {
       {/* Footer */}
       <Footer />
     </div>
+  ) : (
+    <Navigate to="/dashboard" replace />
   );
 };
 
-export default Layout;
+export default PublicRoute;

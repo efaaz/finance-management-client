@@ -7,13 +7,14 @@ import SignUp from "../pages/SignUp";
 import SignIn from "../pages/SignIn";
 import AboutUs from "../pages/AboutUs";
 import AuthInitializer from "../components/AuthInitializer/AuthInitializer";
+import PublicRoute from "./PublicRoute";
 
 const AppRoutes = () => {
   return (
     <AuthInitializer>
       <Routes>
         {/* Main Layout */}
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<PublicRoute />}>
           <Route path="/" element={<Home />} />
           <Route path="/features" element={<FeaturePage />} />
           <Route path="/sign-in" element={<SignIn />} />
