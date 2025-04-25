@@ -15,8 +15,8 @@ export function FeaturesSection() {
           intuitive design that adapts to your financial needs.
         </p>
       </div>
-      <div className="py-8 lg:py-20 mx-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-2 max-w-7xl mx-auto">
+      <div className="py-8 lg:py-20 ">
+        <div className="grid grid-cols-1 px-4 md:px-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6 md:gap-4 gap-4 max-w-7xl mx-auto">
           {grid.map((feature, idx) => (
             <div
               key={idx}
