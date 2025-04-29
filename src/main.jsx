@@ -9,22 +9,21 @@ import { Provider, useDispatch } from "react-redux";
 import store from "./app/store.js";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { Toaster } from "./components/ui/toaster.jsx";
-import setupInterceptors from "./api/axiosInterceptors.js";
+import AuthInitializer from "./components/AuthInitializer/AuthInitializer.jsx";
 
 // Create app component with proper hook usage
 const AppWrapper = () => {
   return (
     <BrowserRouter>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <AppRoutes />
-        <Toaster />
-      </ThemeProvider>
+      <AuthInitializer>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <AppRoutes />
+          <Toaster />
+        </ThemeProvider>
+      </AuthInitializer>
     </BrowserRouter>
   );
 };
-
-// Initialize interceptors before creating root
-setupInterceptors();
 
 // Create root and render app
 createRoot(document.getElementById("root")).render(
