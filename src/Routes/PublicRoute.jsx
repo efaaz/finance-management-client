@@ -1,22 +1,15 @@
 import { useSelector } from "react-redux";
-import { Navigate, Outlet } from "react-router";
-import Navbar from "../components/Header/Navbar";
-import Footer from "../components/Landing/Footer";
+import { Navigate } from "react-router";
+import ErrorDisplay from "../components/ErrorDisplay/ErrorDisplay";
+import PublicLayout from "./Layouts/PublicLayout";
 
 const PublicRoute = () => {
   const { isAuthenticated } = useSelector((state) => state.auth);
 
   return !isAuthenticated ? (
-    <div className="flex flex-col min-h-screen bg-black bg-grid-small-white/[0.1]">
-      {/* Header */}
-      <Navbar />
-      {/* Main Content */}
-      <main className="flex-grow">
-        <Outlet />
-      </main>
-      {/* Footer */}
-      <Footer />
-    </div>
+    <>
+      <PublicLayout /> <ErrorDisplay />
+    </>
   ) : (
     <Navigate to="/dashboard" replace />
   );
