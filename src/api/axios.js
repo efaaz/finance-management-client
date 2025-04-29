@@ -1,9 +1,20 @@
+
 import axios from "axios";
-const instance = axios.create({
-  baseURL: "http://localhost:8000/api/v1/auth/users", // General API base URL
-  withCredentials: true, // Include credentials (cookies) in requests
+
+// Separate instances for public/private routes
+const publicInstance = axios.create({
+  baseURL: "http://localhost:8000/api/v1/auth/users",
   headers: {
     "Content-Type": "application/json",
-  },
+  }
 });
-export default instance;
+
+const privateInstance = axios.create({
+  baseURL: "http://localhost:8000/api/v1/auth/users",
+  withCredentials: true, // Only for authenticated routes
+  headers: {
+    "Content-Type": "application/json",
+  }
+});
+
+export { publicInstance, privateInstance };

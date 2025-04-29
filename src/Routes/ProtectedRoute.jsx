@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate } from "react-router";
+import ProtectedLayout from "./Layouts/ProtectedLayout";
 
 const ProtectedRoute = () => {
-  const { isAuthenticated, appLoaded } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
+  return user ? <ProtectedLayout /> : <Navigate to="/sign-in" replace />;
+
   
-  if (!appLoaded) return <LoadingScreen />;
-  
-  return isAuthenticated ? <Outlet /> : <Navigate to="/sign-in" replace />;
 };
 
 export default ProtectedRoute;
