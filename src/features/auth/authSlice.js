@@ -91,8 +91,6 @@ const authSlice = createSlice({
       Object.assign(state, initialState);
       toast.success("Logout successful!");
     });
-
-    // Then: Generic matchers using addMatcher()
     
     // Common pending state
     builder.addMatcher(
@@ -144,7 +142,7 @@ const authSlice = createSlice({
     builder.addMatcher(
       api.endpoints.getMe.matchFulfilled,
       (state, { payload }) => {
-        state.user = payload;
+        state.user = payload.data;
         state.isAuthenticated = true;
       }
     );

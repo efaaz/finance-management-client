@@ -2,11 +2,10 @@ import { useEffect } from "react";
 import { useGetMeQuery } from "../../api/apiSlice";
 import { setUser } from "../../features/auth/authSlice";
 import { useDispatch } from "react-redux";
-import { toast } from "sonner"; // or your notification library
 
 const AuthInitializer = ({ children }) => {
   const dispatch = useDispatch();
-  const { data, error, isLoading, isUninitialized } = useGetMeQuery();
+  const { data, isLoading, isUninitialized } = useGetMeQuery();
 
   useEffect(() => {
     if (data) {

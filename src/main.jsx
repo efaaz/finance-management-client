@@ -14,14 +14,14 @@ import AuthInitializer from "./components/AuthInitializer/AuthInitializer.jsx";
 // Create app component with proper hook usage
 const AppWrapper = () => {
   return (
-    <BrowserRouter>
-      <AuthInitializer>
-        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <BrowserRouter>
+        <AuthInitializer>
           <AppRoutes />
           <Toaster />
-        </ThemeProvider>
-      </AuthInitializer>
-    </BrowserRouter>
+        </AuthInitializer>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 };
 

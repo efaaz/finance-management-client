@@ -1,4 +1,3 @@
-
 import axios from "axios";
 
 // Separate instances for public/private routes

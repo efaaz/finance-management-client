@@ -17,8 +17,8 @@ export const api = createApi({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          // console.log("getMe data:", data.data);
-          dispatch(setUser(data.data));
+          console.log("getMe data:", data.data);
+          await dispatch(setUser(data.data));
         } catch (error) {
           // Error is automatically handled by baseQueryWithReauth
           console.error("getMe error:", error);
